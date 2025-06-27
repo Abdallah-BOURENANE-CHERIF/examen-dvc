@@ -40,3 +40,16 @@ stages:
     - src/models/4_train_model.py
     outs:
     - models/trained_model.pkl
+  evaluate:
+    cmd: python src/models/5_evaluate.py models/trained_model.pkl 
+      data/processed_data metrics
+    deps:
+    - data/processed_data/X_test_scaled.csv
+    - data/processed_data/y_test.csv
+    - models/trained_model.pkl
+    - src/models/5_evaluate.py
+    outs:
+    - data/processed_data/y_pred.csv
+    metrics:
+    - metrics/scores.json:
+        cache: false
