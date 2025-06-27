@@ -1,0 +1,11 @@
+stages:
+  split_data:
+    cmd: python src/data/1_split_data.py data/raw/raw.csv data/processed_data
+    deps:
+    - data/raw/raw.csv
+    - src/data/1_split_data.py
+    outs:
+    - data/processed_data/X_test.csv
+    - data/processed_data/X_train.csv
+    - data/processed_data/y_test.csv
+    - data/processed_data/y_train.csv
