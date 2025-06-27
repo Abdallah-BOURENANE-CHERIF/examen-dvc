@@ -57,3 +57,24 @@ stages:
       hash: md5
       md5: 264ab4b5592bef42c3b945f8cafaea38
       size: 1412
+  tune_model:
+    cmd: python src/models/3_tune_model.py data/processed_data 
+      models/best_params.pkl
+    deps:
+    - path: data/processed_data/X_train_scaled.csv
+      hash: md5
+      md5: 2ae9ad49829e68d0be841d195f490fc0
+      size: 256562
+    - path: data/processed_data/y_train.csv
+      hash: md5
+      md5: a9cd9d91da89f732843d72548f64ded3
+      size: 25951
+    - path: src/models/3_tune_model.py
+      hash: md5
+      md5: b7cf354a056b9af905c477039da49efe
+      size: 1488
+    outs:
+    - path: models/best_params.pkl
+      hash: md5
+      md5: fb78179398006142a6f51e1d4b2557a8
+      size: 94
