@@ -1,0 +1,8 @@
+pandas
+requests
+pandas 
+scikit-learn 
+joblib
+dvc[gs] 
+dagshub 
+
