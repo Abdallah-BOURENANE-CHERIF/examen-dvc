@@ -1,20 +1,51 @@
-# Examen DVC et Dagshub
-Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la solution de l'examen. 
+First Name: BOURENANE CHERIF
+Last Name: Abdallah
 
-```bash       
-├── examen_dvc          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw       
-│   ├── metrics       
-│   ├── models      
-│   │   ├── data      
-│   │   └── models        
-│   ├── src       
-│   └── README.md.py       
-```
-N'hésitez pas à rajouter les dossiers ou les fichiers qui vous semblent pertinents.
+e-mail adresse: abdallah.bourenanecherif@amundi.com
 
-Vous devez dans un premier temps *Fork* le repo et puis le cloner pour travailler dessus. Le rendu de cet examen sera le lien vers votre dépôt sur DagsHub. Faites attention à bien mettre https://dagshub.com/licence.pedago en tant que colaborateur avec des droits de lecture seulement pour que ce soit corrigé.
+Please find the codes in Master Branch of the repository.
 
-Vous pouvez télécharger les données à travers le lien suivant : https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv.
+Mineral‑Flotation Model Pipeline:
+
+
+A fully‑reproducible DVC 3.x project that models silica concentration in an
+iron‑ore flotation process.  The repo shows how to go from raw CSV → trained
+model → evaluation metrics while storing all large artifacts in DagsHub.
+
+
+.
+├── data
+│   ├── raw/                
+│   └── processed_data/     
+├── models/                 
+├── metrics/                
+├── src/                   
+│   ├── data/
+│   └── models/
+├── dvc.yaml  dvc.lock      
+└── README.md
+
+Quick‑start
+
+git clone https://dagshub.com/Abdallah-BOURENANE-CHERIF/examen-dvc
+cd examen-dvc
+
+# 2 create virtual‑env & install deps
+python -m venv .venv
+source .venv/bin/activate     
+pip install -r requirements.txt
+
+# 3 download raw data
+python src/data/import_raw_data.py -o data/raw   
+
+# 4 track dataset with DVC
+dvc init -q                        
+dvc add data/raw/raw.csv
+
+# 5 build the pipeline & run everything once
+# (dvc.yaml already contains the stages)
+dvc repro --force                  
+
+# 6 inspect metrics
+cat metrics/scores.json 
+
